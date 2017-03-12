@@ -24,22 +24,22 @@ public class TheaterController {
         this.showRepository = showRepository;
     }
 
-    @GetMapping("/theater/timetable")
+    @GetMapping("/timetable")
     public List<TimeTableDTO> getTimetable() {
         return showService.getTimeTable();
     }
 
-    @GetMapping("/theater/{theaterId}")
+    @GetMapping("/{theaterId}")
     public Theater getTheaterDetail(@PathVariable("theaterId") String theaterId) {
         return theaterRepository.findOne(theaterId);
     }
 
-    @GetMapping("/theater/show/{showId}")
+    @GetMapping("/show/{showId}")
     public Show getShowDetail(@PathVariable("showId") String showId) {
         return showRepository.findOne(showId);
     }
 
-    @PostMapping("/theater/book")
+    @PostMapping("/book")
     public BookResultDTO bookTickets(@RequestBody BookRequestDTO bookRequestDTO){
         return showService.bookTickets(bookRequestDTO);
     }
