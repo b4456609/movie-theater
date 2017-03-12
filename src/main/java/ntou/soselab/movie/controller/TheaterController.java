@@ -43,9 +43,4 @@ public class TheaterController {
     public BookResultDTO bookTickets(@RequestBody BookRequestDTO bookRequestDTO){
         return showService.bookTickets(bookRequestDTO);
     }
-//    GET /theater/timetable 電影時刻表
-//    GET /theater/{theatherId} 電影廳資訊
-//    GET /theater/show/{showId} 電影廳該場次資訊
-//    POST /theater/book/{showId} 預約座位
-
 }
