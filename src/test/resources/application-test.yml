@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: theater
+  data:
+    mongodb:
+      database: pack
+      host: ${TEST_DB_HOST:localhost}
+
+eureka:
+  client:
+    enabled: false
+
+ribbon:
+  eureka:
+   enabled: false
+
+feign:
+  hystrix:
+    enabled: false
+
+movie:
+  ribbon:
+    listOfServers: localhost:8085

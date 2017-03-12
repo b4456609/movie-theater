@@ -6,5 +6,5 @@ import lombok.Data;
 public class MovieDTO {
     String title;
     String rated;
-    int runTime;
+    String runTime;
 }

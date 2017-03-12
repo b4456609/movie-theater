@@ -8,6 +8,6 @@ import lombok.Data;
 public class TimeTableDTO {
     private String theaterId;
     private String movieName;
-    private int runTime;
+    private String runTime;
     private long start;
 }
