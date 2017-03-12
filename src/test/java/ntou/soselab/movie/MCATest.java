@@ -1,4 +1,4 @@
-package ntou.soselab.movie.client;
+package ntou.soselab.movie;
 
 
 import org.junit.Test;
@@ -13,7 +13,7 @@ import soselab.easylearn.MCA.ProjectReader;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@ActiveProfiles("mca")
 public class MCATest {
     @Autowired
     private TestRestTemplate restTemplate;
@@ -23,7 +23,7 @@ public class MCATest {
 
     // The package need to scan
     // private String packageName = "soselab.easyelarn";
-    private String packageName = "ntou.soselab.movie";
+    private String packageName = this.getClass().getPackage().getName();
 
 
     @Test
