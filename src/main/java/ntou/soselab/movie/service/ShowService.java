@@ -10,6 +10,7 @@ import ntou.soselab.movie.repository.ShowRepository;
 import ntou.soselab.movie.repository.TheaterRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,15 +29,18 @@ public class ShowService {
 
     public List<TimeTableDTO> getTimeTable() {
         List<Show> all = showRepository.findAll();
-        return all.stream().map(show -> {
+        List<TimeTableDTO> timeTableDTOS = new ArrayList<>();
+        for (Show show : all) {
             MovieDTO movieDetail = movieClient.getMovieDetail(show.getMovieId());
-            return TimeTableDTO.builder()
+            TimeTableDTO build = TimeTableDTO.builder()
                     .movieName(movieDetail.getTitle())
                     .runTime(movieDetail.getRunTime())
                     .theaterId(show.getTheaterId())
                     .start(show.getStart())
                     .build();
-        }).collect(Collectors.toList());
+            timeTableDTOS.add(build);
+        }
+        return timeTableDTOS;
     }
 
     public BookResultDTO bookTickets(BookRequestDTO bookRequestDTO) {

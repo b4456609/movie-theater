@@ -5,7 +5,9 @@ spring:
     mongodb:
       database: pack
       host: ${TEST_DB_HOST:localhost}
-
+endpoints:
+  mappings:
+    sensitive: false
 eureka:
   client:
     enabled: false
