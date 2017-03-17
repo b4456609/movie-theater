@@ -2,6 +2,7 @@ package ntou.soselab.movie.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 @Data
 @Builder
@@ -12,4 +13,7 @@ public class Show {
     long start;
     long end;
     int emptySeat;
+
+    @Tolerate
+    Show(){}
 }
