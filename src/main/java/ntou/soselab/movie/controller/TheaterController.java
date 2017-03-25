@@ -1,5 +1,6 @@
 package ntou.soselab.movie.controller;
 
+import feign.Body;
 import ntou.soselab.movie.controller.dto.BookRequestDTO;
 import ntou.soselab.movie.controller.dto.BookResultDTO;
 import ntou.soselab.movie.controller.dto.TimeTableDTO;
@@ -11,6 +12,7 @@ import ntou.soselab.movie.service.ShowService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class TheaterController {
@@ -42,5 +44,18 @@ public class TheaterController {
     @PostMapping("/book")
     public BookResultDTO bookTickets(@RequestBody BookRequestDTO bookRequestDTO){
         return showService.bookTickets(bookRequestDTO);
+    }
+
+    @PostMapping("/show")
+    public Show addShow(@RequestBody Show showDTO){
+        showDTO.setId(UUID.randomUUID().toString());
+        showRepository.save(showDTO);
+        return showDTO;
+    }
+
+    @PostMapping("/")
+    public Theater addTheater(@RequestBody Theater theaterDTO){
+        theaterRepository.save(theaterDTO);
+        return theaterDTO;
     }
 }
