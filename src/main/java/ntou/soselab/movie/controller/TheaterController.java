@@ -9,6 +9,7 @@ import ntou.soselab.movie.model.Theater;
 import ntou.soselab.movie.repository.ShowRepository;
 import ntou.soselab.movie.repository.TheaterRepository;
 import ntou.soselab.movie.service.ShowService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,9 @@ public class TheaterController {
     private final TheaterRepository theaterRepository;
     private final ShowRepository showRepository;
 
-    public TheaterController(ShowService showService, TheaterRepository theaterRepository, ShowRepository showRepository) {
+    @Autowired
+    public TheaterController(ShowService showService, TheaterRepository theaterRepository,
+                             ShowRepository showRepository) {
         this.showService = showService;
         this.theaterRepository = theaterRepository;
         this.showRepository = showRepository;
