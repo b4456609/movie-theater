@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("movie")
 public interface MovieClient {
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     MovieDTO getMovieDetail(@PathVariable("id") String id);
 }
