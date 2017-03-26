@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 public class TheaterController {
@@ -30,8 +31,14 @@ public class TheaterController {
     }
 
     @GetMapping("/timetable")
-    public List<TimeTableDTO> getTimetable() {
-        return showService.getTimeTable();
+    public List<TimeTableDTO> getTimetable(@RequestParam(value = "q", required = false) String name) {
+        List<TimeTableDTO> timeTable = showService.getTimeTable();
+        if(name == null){
+            return timeTable;
+        }
+        return timeTable.stream()
+                .filter(item -> item.getMovieName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{theaterId}")
