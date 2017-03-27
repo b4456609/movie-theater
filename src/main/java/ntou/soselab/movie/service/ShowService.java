@@ -1,5 +1,6 @@
 package ntou.soselab.movie.service;
 
+import lombok.extern.slf4j.Slf4j;
 import ntou.soselab.movie.client.MovieClient;
 import ntou.soselab.movie.client.dto.MovieDTO;
 import ntou.soselab.movie.controller.dto.BookRequestDTO;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ShowService {
 
     private final ShowRepository showRepository;
@@ -32,6 +34,7 @@ public class ShowService {
         List<TimeTableDTO> timeTableDTOS = new ArrayList<>();
         for (Show show : all) {
             MovieDTO movieDetail = movieClient.getMovieDetail(show.getMovieId());
+            log.info("{}", movieDetail);
             TimeTableDTO build = TimeTableDTO.builder()
                     .movieName(movieDetail.getTitle())
                     .runTime(movieDetail.getRunTime())
