@@ -11,6 +11,7 @@ public class TimeTableDTO {
     private String movieName;
     private String runTime;
     private long start;
+    private int emptySeat;
 
     @Tolerate
     TimeTableDTO(){}

@@ -41,6 +41,7 @@ public class ShowService {
                     .runTime(movieDetail.getRunTime())
                     .theaterId(show.getTheaterId())
                     .start(show.getStart())
+                    .emptySeat(show.getEmptySeat())
                     .build();
             timeTableDTOS.add(build);
         }
