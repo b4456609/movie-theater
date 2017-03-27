@@ -1,6 +1,7 @@
 package ntou.soselab.movie.controller;
 
 import feign.Body;
+import lombok.extern.slf4j.Slf4j;
 import ntou.soselab.movie.controller.dto.BookRequestDTO;
 import ntou.soselab.movie.controller.dto.BookResultDTO;
 import ntou.soselab.movie.controller.dto.TimeTableDTO;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 public class TheaterController {
     private final ShowService showService;
@@ -60,6 +62,7 @@ public class TheaterController {
     public Show addShow(@RequestBody Show showDTO){
         showDTO.setId(UUID.randomUUID().toString());
         showRepository.save(showDTO);
+        log.info("{}", showDTO);
         return showDTO;
     }
 
