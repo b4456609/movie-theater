@@ -33,6 +33,7 @@ public class ShowService {
         List<Show> all = showRepository.findAll();
         List<TimeTableDTO> timeTableDTOS = new ArrayList<>();
         for (Show show : all) {
+            log.info("get movie id {}", show.getMovieId());
             MovieDTO movieDetail = movieClient.getMovieDetail(show.getMovieId());
             log.info("{}", movieDetail);
             TimeTableDTO build = TimeTableDTO.builder()
