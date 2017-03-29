@@ -58,7 +58,7 @@ public class MovieClientTest {
         return builder
                 .given(String.format("The La la land exists in db And id is '%s'", movieId))
                 .uponReceiving("Get la la land movie detail")
-                    .path("/" + movieId)
+                    .path("/id/" + movieId)
                     .method("GET")
                 .willRespondWith()
                     .status(200)
