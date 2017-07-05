@@ -6,4 +6,4 @@ EXPOSE 8080
 
 COPY ./build/libs/theater-0.0.1-SNAPSHOT.jar /opt/app/
 
-CMD ["java", "-jar", "theater-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT exec java $JAVA_OPTS -jar theater-0.0.1-SNAPSHOT.jar
